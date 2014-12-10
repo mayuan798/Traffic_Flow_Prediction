@@ -204,6 +204,7 @@ inline string filename_analysis(const string filename){
 	if (count < 6){
 		token = s.substr(0, 2);
 		varFILE_TIMESTEMP = varFILE_TIMESTEMP + token;
+		Date_info += token + ',';
 		s.erase(0, 2);
 	}
 	Date_info = varFILE_TIMESTEMP + ',' + Date_info;
