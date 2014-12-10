@@ -23,18 +23,17 @@ extern const boost::regex escaped_filter("(\\w*:?\\\\)*Incident");
 extern const boost::regex data_folder_filter("(\\w*:?\\\\)*RealtimeFlow(\\\\)\\w{2}");
 extern const boost::regex gz_filter("(\\w*:?\\\\)*\\w*.gz");
 
-/*
+
 const string Route_info = "ROAD_CODE,";						// reserve information, currently not used
 const string Time_info	= "FILE_TIMESTEMP, YEAR, MONTH, DAY, HOUR, MINUTE, SECOND,";
 const string TMC_info	= "TIMESTEMP, TMC_ID, LOCATION_ID, LOCATION_DESC, ROAD_DIRECTION, LENGTH(mi), LANE_TYPE, current_DURATION(min), current_AVERAGE_SPEED(mph), freeflow_DURATION(min), freeflow_AVERAGE_SPEED(mph), JAM_FACTOR, JAM_FACTOR_TREND, CONFIDENCE";
-*/
 
 int main(int argc, char* argv[])
 {
 	// # can add argv[] detection (argument 1)
-	path root ("R:\\TMC_Data_root");
+	path root ("D:\\Data_Repository\\TMC_RealtimeFlow");
 	// # can add argv[] detection (argument 2)
-	std::ifstream inputfile("C:/Users/mayuan/Desktop/QueryTMCdata/target/F3_Route_unique_TMC_list.txt");
+	std::ifstream inputfile("D:/Project_Programs/QueryTMCdata_ver_1.1 - Fullinfo/target/F4_Route_unique_TMC_list.txt");
 	
 	if(!inputfile){ //Always test the file open.
 		std::cout<<"Error opening output file"<< std::endl;		// DUBUG INFO
@@ -87,7 +86,7 @@ int write_data(const boost::filesystem::path current_dir, vector<std::string> TM
 		// start extracting TMC data from it.
 		for ( it = TMCvector.begin(); it<TMCvector.end(); it++){
 			// for each TMC code, do the following step:
-			// string varTIEMSTEMP = doc.child("TRAFFICML_REALTIME").attribute("TIMESTAMP").value();
+			string varTIEMSTEMP = doc.child("TRAFFICML_REALTIME").attribute("TIMESTAMP").value();
 			// Query the xml file to find the nodes of target TMC section
 			string XPath_query_string = "/TRAFFICML_REALTIME/ROADWAY_FLOW_ITEMS/ROADWAY_FLOW_ITEM/FLOW_ITEMS/FLOW_ITEM[ID='" + *it +  "']";
 			pugi::xpath_query query_remote_tools(XPath_query_string.data());
@@ -96,8 +95,7 @@ int write_data(const boost::filesystem::path current_dir, vector<std::string> TM
 			// all found nodes are in teh node_set, then put the information of the node in to string and write into outfile.
 			pugi::xml_node TMC_node = TMCsets[0].node();
 			string TMC_record = TMCinfo_to_String(TMC_node);
-			Output_file << Date_info << TMC_record << std::endl;
-			// Output_file << Date_info << varTIEMSTEMP << ',' << TMC_record << std::endl;
+			Output_file << Date_info << varTIEMSTEMP << ',' << TMC_record << std::endl;
 		}
 		std::cout << "Finish extracting data from file: " << gzfile_name << std::endl;
 	}
@@ -120,11 +118,10 @@ int traverse_folder(const boost::filesystem::path p, vector<std::string> TMCvect
 				// std::cout << "******************************" << endl;		# DEBUG info
 				// Opening file to print info to, file name can be modified.
 				ofstream Output_file (p.string() + "_test_TMC_output.csv");
-				// Output_file << Time_info << TMC_info << endl;		// add headline information
+				Output_file << Time_info << TMC_info << endl;		// add headline information
 				for (vector<path>::const_iterator it(v.begin()), it_end(v.end()); it != it_end; ++it){
 					cout << "   " << *it << '\n';
 					path current_path = *it;
-
 					std::string delete_cmd = "del " + current_path.string() + "\\*.xml";
 					std::cout << "pre processing: deleted unzipped xml files in folder " << current_path.string()  << std::endl;
 					system(delete_cmd.data());
@@ -204,11 +201,7 @@ inline string filename_analysis(const string filename){
 		}
 		s.erase(0, pos + delimiter.length());
 	}
-	if (count < 6){
-		token = s.substr(0, 2);
-		varFILE_TIMESTEMP = varFILE_TIMESTEMP + token;
-		s.erase(0, 2);
-	}
+
 	Date_info = varFILE_TIMESTEMP + ',' + Date_info;
 	return Date_info;
 }
@@ -226,7 +219,7 @@ inline string TMCinfo_to_String(const pugi::xml_node TMC_node){
 	// std::cout << "3 LOCATION_DESC:\t"<< varLOCATION_DESC << std::endl;
 	// Column #4 ROAD_DIRECTION
 	string varROAD_DIRECTION	= TMC_node.child("RDS_LINK").child("LOCATION").child_value("RDS_DIRECTION");
-	varROAD_DIRECTION = ("+" == varROAD_DIRECTION) ? "1" : "0";			// translate "+" / "-" to "1" "-1"
+	// varROAD_DIRECTION = ("+" == varROAD_DIRECTION) ? 1 : -1;			// translate "+" / "-" to "1" "-1"
 	// std::cout << "4 ROAD_DIRECTION:\t"<< varROAD_DIRECTION << std::endl;
 	// Column #5 LENGTH
 	string varLENGTH	= TMC_node.child("RDS_LINK").child_value("LENGTH");
@@ -256,10 +249,8 @@ inline string TMCinfo_to_String(const pugi::xml_node TMC_node){
 	string varCONFIDENCE	= TMC_node.child("CURRENT_FLOW").child_value("CONFIDENCE");
 	// std::cout << "13 CONFIDENCE:\t"<< varCONFIDENCE << std::endl;
 
-	/*
 	string TMC_record = varID + ',' + varLOCATION_ID + ',' + varLOCATION_DESC + ',' + varROAD_DIRECTION + ',' + varLENGTH + ',' + varLANE_TYPE + ',' + var_current_DURATION + ',' + var_current_AVERAGE_SPEED + ',' + var_freeflow_DURATION + ',' + var_freeflow_AVERAGE_SPEED + ',' + varJAM_FACTOR + ',' + varJAM_FACTOR_TREND + ',' + varCONFIDENCE;
-	*/
-	string TMC_record = varLOCATION_ID + ',' + varROAD_DIRECTION + ',' + var_current_AVERAGE_SPEED + ',' + var_freeflow_AVERAGE_SPEED;
+
 	return TMC_record;
 }
 
