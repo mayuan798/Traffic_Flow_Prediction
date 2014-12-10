@@ -32,9 +32,9 @@ const string TMC_info	= "TIMESTEMP, TMC_ID, LOCATION_ID, LOCATION_DESC, ROAD_DIR
 int main(int argc, char* argv[])
 {
 	// # can add argv[] detection (argument 1)
-	path root ("R:\\TMC_Data_root");
+	path root ("D:\\Data_Repository\\TMC_RealtimeFlow\\run");
 	// # can add argv[] detection (argument 2)
-	std::ifstream inputfile("C:/Users/mayuan/Desktop/QueryTMCdata/target/F3_Route_unique_TMC_list.txt");
+	std::ifstream inputfile("../target/F4_Route_unique_TMC_list.txt");
 	
 	if(!inputfile){ //Always test the file open.
 		std::cout<<"Error opening output file"<< std::endl;		// DUBUG INFO
@@ -207,6 +207,7 @@ inline string filename_analysis(const string filename){
 	if (count < 6){
 		token = s.substr(0, 2);
 		varFILE_TIMESTEMP = varFILE_TIMESTEMP + token;
+		Date_info += token + ',';
 		s.erase(0, 2);
 	}
 	Date_info = varFILE_TIMESTEMP + ',' + Date_info;
