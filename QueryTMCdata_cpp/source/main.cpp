@@ -201,7 +201,11 @@ inline string filename_analysis(const string filename){
 		}
 		s.erase(0, pos + delimiter.length());
 	}
-
+	if (count < 6){
+		token = s.substr(0, 2);
+		varFILE_TIMESTEMP = varFILE_TIMESTEMP + token;
+		s.erase(0, 2);
+	}
 	Date_info = varFILE_TIMESTEMP + ',' + Date_info;
 	return Date_info;
 }
