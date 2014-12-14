@@ -8,7 +8,7 @@ addpath(genpath('./'));
 % config.num_TMCs
 
 %% data preparation
-dp_flag = 0;                    % data preparation flag
+dp_flag = 1;                    % data preparation flag
 config.time_intervals = 20;     % 10 minutes data
 config.data_file = 'Route1RawX';
 if ~exist('training_data.mat', 'file') || (1 == dp_flag)
@@ -28,7 +28,7 @@ end
 
 %% running SAE
 
-sae_train_flag = 1;
+sae_train_flag = 0;
 if sae_train_flag
     load('training_data');
     rng('default');     % initialize random seed
