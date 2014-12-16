@@ -19,10 +19,10 @@ function [num_TMCs] = prepare_data(time_intervals, data_file)
 %     train_x = zeros(rows, columns);
 %     train_x = zeros(rows - num_intervals, columns);
 
-    train_x = zeros(1000, columns);
+    train_x = zeros(floor(rows/4), columns);
     
     %% parallel generate training dataset
-    parfor i = 1 + num_intervals:1000 + num_intervals
+    parfor i = 1 + num_intervals:floor(rows/4) + num_intervals
         % need add time information, time index (t_0 - 1)
         % put (t_0 - 5, t_0 - 4, t_0 - 3, t_0 - 2, t_0 - 1) into one raw 
         train_x(i - num_intervals, :) = [time_index(i-1, 1), reshape(norm_raw_x(i - num_intervals:i - 1, :), 1, columns - 1)];

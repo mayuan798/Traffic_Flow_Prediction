@@ -9,7 +9,7 @@ addpath(genpath('./'));
 
 %% data preparation
 dp_flag = 0;                    % data preparation flag
-config.time_intervals = 20;     % 10 minutes data
+config.time_intervals = 30;     % 10 minutes data
 config.data_file = 'Route1RawX';
 if ~exist('training_data.mat', 'file') || (1 == dp_flag)
     disp('Generating training dataset.');
@@ -37,7 +37,7 @@ if sae_train_flag
 
     input_size = config.time_intervals / 2 * config.num_TMCs;
     % set the architecture of SAE
-    hidden_layer = [120, 90];
+    hidden_layer = [200, 100];
     sae_nn = saesetup([input_size, hidden_layer]);
 
     %% sae.ae{k} structure
@@ -45,7 +45,7 @@ if sae_train_flag
     % sae.ae{k}.learningRate:           learning rate for autoencoder
     % sae.ae{k}.inputZeroMaskedFraction: have no idea
     sae_nn.ae{1}.activation_function        = 'sigm';
-    sae_nn.ae{1}.learningRate              = 0.1;
+    sae_nn.ae{1}.learningRate              = 0.01;
     sae_nn.ae{1}.inputZeroMaskedFraction   = 0;
     
     sae_nn.ae{2}.activation_function        = 'sigm';
