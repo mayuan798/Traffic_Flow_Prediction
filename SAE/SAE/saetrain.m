@@ -1,5 +1,6 @@
 function sae = saetrain(sae, x, opts)
     for i = 1 : numel(sae.ae);
+        tic;
         lastL = -1;
         sae.ae{i}.L = 0;
         count = 0;
@@ -10,7 +11,7 @@ function sae = saetrain(sae, x, opts)
             count = count + 1;
             lastL = sae.ae{i}.L;
             sae.ae{i} = nntrain(sae.ae{i}, x, x, opts);
-            sprintf('Reapt triaing AE %d times. %f', count, sae.ae{i}.L)
+%             sprintf('Reapt triaing AE %d times. %f', count, sae.ae{i}.L)
         end
         
         disp(['Finish training AE ' num2str(i) '/' num2str(numel(sae.ae))]);
@@ -18,5 +19,6 @@ function sae = saetrain(sae, x, opts)
         x = t.a{2};
         %remove bias term
         x = x(:,2:end);
+        toc;
     end
 end
