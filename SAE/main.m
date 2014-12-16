@@ -8,7 +8,7 @@ addpath(genpath('./'));
 % config.num_TMCs
 
 %% data preparation
-dp_flag = 1;                    % data preparation flag
+dp_flag = 0;                    % data preparation flag
 config.time_intervals = 20;     % 10 minutes data
 config.data_file = 'Route1RawX';
 if ~exist('training_data.mat', 'file') || (1 == dp_flag)
@@ -28,15 +28,16 @@ end
 
 %% running SAE
 
-sae_train_flag = 0;
+sae_train_flag = 1;
+
 if sae_train_flag
     load('training_data');
-    rng('default');     % initialize random seed
+    rng('shuffle');     % initialize random seed, use current time
     disp('Running SAE part');
 
     input_size = config.time_intervals / 2 * config.num_TMCs;
     % set the architecture of SAE
-    hidden_layer = [round(4 / 5 * input_size), round( 3 / 5 * input_size)];
+    hidden_layer = [120, 90];
     sae_nn = saesetup([input_size, hidden_layer]);
 
     %% sae.ae{k} structure
@@ -44,7 +45,7 @@ if sae_train_flag
     % sae.ae{k}.learningRate:           learning rate for autoencoder
     % sae.ae{k}.inputZeroMaskedFraction: have no idea
     sae_nn.ae{1}.activation_function        = 'sigm';
-    sae_nn.ae{1}.learningRate              = 0.25;
+    sae_nn.ae{1}.learningRate              = 0.1;
     sae_nn.ae{1}.inputZeroMaskedFraction   = 0;
     
     sae_nn.ae{2}.activation_function        = 'sigm';
@@ -59,9 +60,8 @@ if sae_train_flag
 
     % ignore the time index
     train_x = train_x((1:floor(size(train_x, 1) / opts.batchsize) * opts.batchsize), 2:end);
-    tic;
     sae_nn = saetrain(sae_nn, train_x, opts);
-    toc;    
+        
     save('./output/sae_network.mat', 'sae_nn');
 
 
