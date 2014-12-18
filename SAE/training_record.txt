@@ -1,122 +1,170 @@
 Layer 1
-1 time training. current loss: 1.864957 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.897559
+1 time training. current loss: 1.198270 	 first loss: Inf 	 average loss: Inf	 minmum error: 1.198270
+difference(times 10^10): Inf 	max/min error 0.866189
 Layer 1
-2 time training. current loss: 1.023478 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.927601
+2 time training. current loss: 0.657744 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.657744
+difference(times 10^10): Inf 	max/min error 0.922162
 Layer 1
-3 time training. current loss: 0.899263 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.902871
+3 time training. current loss: 0.623817 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.623817
+difference(times 10^10): Inf 	max/min error 0.828020
 Layer 1
-4 time training. current loss: 0.761625 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.895383
+4 time training. current loss: 0.497505 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.497505
+difference(times 10^10): Inf 	max/min error 0.857735
 Layer 1
-5 time training. current loss: 0.599491 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.830312
+5 time training. current loss: 0.433575 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.433575
+difference(times 10^10): Inf 	max/min error 0.869234
 Layer 1
-6 time training. current loss: 0.642589 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.894404
+6 time training. current loss: 0.409277 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.409277
+difference(times 10^10): Inf 	max/min error 0.833506
 Layer 1
-7 time training. current loss: 0.617798 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.876402
+7 time training. current loss: 0.422398 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.409277
+difference(times 10^10): Inf 	max/min error 0.894198
 Layer 1
-8 time training. current loss: 0.621464 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.853622
+8 time training. current loss: 0.412235 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.409277
+difference(times 10^10): Inf 	max/min error 0.886090
 Layer 1
-9 time training. current loss: 0.630477 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.911991
+9 time training. current loss: 0.375066 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.375066
+difference(times 10^10): Inf 	max/min error 0.871657
 Layer 1
-10 time training. current loss: 0.574934 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.804562
+10 time training. current loss: 0.375409 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.375066
+difference(times 10^10): Inf 	max/min error 0.775028
 Layer 1
-20 time training. current loss: 0.507466 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.717379
+20 time training. current loss: 0.260505 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.260505
+difference(times 10^10): Inf 	max/min error 0.711676
 Layer 1
-30 time training. current loss: 0.488793 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.734795
+30 time training. current loss: 0.292970 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.260505
+difference(times 10^10): Inf 	max/min error 0.664701
 Layer 1
-40 time training. current loss: 0.462208 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.703274
+40 time training. current loss: 0.253003 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.242668
+difference(times 10^10): Inf 	max/min error 0.639476
 Layer 1
-50 time training. current loss: 0.471665 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.686944
+50 time training. current loss: 0.231773 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.228797
+difference(times 10^10): Inf 	max/min error 0.696708
 Layer 1
-60 time training. current loss: 0.458318 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.713097
+60 time training. current loss: 0.237926 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.219398
+difference(times 10^10): Inf 	max/min error 0.614983
 Layer 1
-70 time training. current loss: 0.383761 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.630856
+70 time training. current loss: 0.200112 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.200112
+difference(times 10^10): Inf 	max/min error 0.622941
 Layer 1
-80 time training. current loss: 0.411560 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.691977
+80 time training. current loss: 0.214929 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.193520
+difference(times 10^10): Inf 	max/min error 0.676367
 Layer 1
-90 time training. current loss: 0.430827 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.680319
+90 time training. current loss: 0.182589 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.182589
+difference(times 10^10): Inf 	max/min error 0.586073
 Layer 1
-100 time training. current loss: 0.358414 	 average loss: 0.472139 	 difference(times 10^10): 1137251829.222146 
-max/min error 0.660290
+100 time training. current loss: 0.167084 	 first loss: 1.198270 	 average loss: 0.272709	 minmum error: 0.167084
+difference(times 10^10): 1056248028.543445 	max/min error 0.557064
 Layer 1
-200 time training. current loss: 0.259491 	 average loss: 0.312755 	 difference(times 10^10): 532640505.298063 
-max/min error 0.600298
-Finish training AE layer 1 	, elapsed time is 548.023683
+200 time training. current loss: 0.129616 	 first loss: 0.177876 	 average loss: 0.150442	 minmum error: 0.119997
+difference(times 10^10): 208251669.964100 	max/min error 0.492530
+Layer 1
+300 time training. current loss: 0.103426 	 first loss: 0.123251 	 average loss: 0.112621	 minmum error: 0.092950
+difference(times 10^10): 91953362.205082 	max/min error 0.479420
+Layer 1
+400 time training. current loss: 0.078216 	 first loss: 0.096860 	 average loss: 0.092280	 minmum error: 0.078216
+difference(times 10^10): 140639640.916509 	max/min error 0.492278
+Layer 1
+500 time training. current loss: 0.076335 	 first loss: 0.080092 	 average loss: 0.079574	 minmum error: 0.070136
+difference(times 10^10): 32384249.499361 	max/min error 0.483932
+Layer 1
+600 time training. current loss: 0.064150 	 first loss: 0.073011 	 average loss: 0.069213	 minmum error: 0.060677
+difference(times 10^10): 50631236.397922 	max/min error 0.454988
+Layer 1
+700 time training. current loss: 0.061544 	 first loss: 0.068257 	 average loss: 0.062430	 minmum error: 0.053641
+difference(times 10^10): 8857596.959315 	max/min error 0.457760
+Layer 1
+800 time training. current loss: 0.057067 	 first loss: 0.059423 	 average loss: 0.057259	 minmum error: 0.050713
+difference(times 10^10): 1923393.892365 	max/min error 0.485115
+Layer 1
+900 time training. current loss: 0.051229 	 first loss: 0.055599 	 average loss: 0.053015	 minmum error: 0.047025
+difference(times 10^10): 17855301.389115 	max/min error 0.431042
+Layer 1
+1000 time training. current loss: 0.046991 	 first loss: 0.048578 	 average loss: 0.049171	 minmum error: 0.042027
+difference(times 10^10): 21798334.800330 	max/min error 0.400895
+Finish training AE layer 1 	, elapsed time is 0.958529
 Layer 2
-1 time training. current loss: 0.188661 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.707254
+1 time training. current loss: 2.824962 	 first loss: Inf 	 average loss: Inf	 minmum error: 2.824962
+difference(times 10^10): Inf 	max/min error 0.993287
 Layer 2
-2 time training. current loss: 0.151227 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.726922
+2 time training. current loss: 1.071335 	 first loss: Inf 	 average loss: Inf	 minmum error: 1.071335
+difference(times 10^10): Inf 	max/min error 0.979307
 Layer 2
-3 time training. current loss: 0.146450 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.644511
+3 time training. current loss: 0.507097 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.507097
+difference(times 10^10): Inf 	max/min error 0.872001
 Layer 2
-4 time training. current loss: 0.168530 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.680187
+4 time training. current loss: 0.335403 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.335403
+difference(times 10^10): Inf 	max/min error 0.868483
 Layer 2
-5 time training. current loss: 0.135505 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.667516
+5 time training. current loss: 0.316041 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.316041
+difference(times 10^10): Inf 	max/min error 0.865027
 Layer 2
-6 time training. current loss: 0.128676 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.711265
+6 time training. current loss: 0.319680 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.316041
+difference(times 10^10): Inf 	max/min error 0.891109
 Layer 2
-7 time training. current loss: 0.140241 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.657171
+7 time training. current loss: 0.289620 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.289620
+difference(times 10^10): Inf 	max/min error 0.816549
 Layer 2
-8 time training. current loss: 0.142406 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.632402
+8 time training. current loss: 0.300475 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.289620
+difference(times 10^10): Inf 	max/min error 0.877069
 Layer 2
-9 time training. current loss: 0.111875 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.611558
+9 time training. current loss: 0.292087 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.289620
+difference(times 10^10): Inf 	max/min error 0.848857
 Layer 2
-10 time training. current loss: 0.135518 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.680770
+10 time training. current loss: 0.273909 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.273909
+difference(times 10^10): Inf 	max/min error 0.805985
 Layer 2
-20 time training. current loss: 0.114640 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.639197
+20 time training. current loss: 0.255401 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.241593
+difference(times 10^10): Inf 	max/min error 0.856132
 Layer 2
-30 time training. current loss: 0.087595 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.717055
+30 time training. current loss: 0.243831 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.241593
+difference(times 10^10): Inf 	max/min error 0.857438
 Layer 2
-40 time training. current loss: 0.077155 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.598185
+40 time training. current loss: 0.238924 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.237882
+difference(times 10^10): Inf 	max/min error 0.848330
 Layer 2
-50 time training. current loss: 0.069068 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.560518
+50 time training. current loss: 0.147356 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.147356
+difference(times 10^10): Inf 	max/min error 0.668873
 Layer 2
-60 time training. current loss: 0.062584 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.514657
+60 time training. current loss: 0.155665 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.147356
+difference(times 10^10): Inf 	max/min error 0.656323
 Layer 2
-70 time training. current loss: 0.055584 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.475773
+70 time training. current loss: 0.152655 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.133669
+difference(times 10^10): Inf 	max/min error 0.633866
 Layer 2
-80 time training. current loss: 0.052295 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.454664
+80 time training. current loss: 0.155979 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.133669
+difference(times 10^10): Inf 	max/min error 0.657609
 Layer 2
-90 time training. current loss: 0.050964 	 average loss: Inf 	 difference(times 10^10): Inf 
-max/min error 0.476918
+90 time training. current loss: 0.142267 	 first loss: Inf 	 average loss: Inf	 minmum error: 0.128093
+difference(times 10^10): Inf 	max/min error 0.666747
 Layer 2
-100 time training. current loss: 0.047064 	 average loss: 0.080656 	 difference(times 10^10): 335921956.794061 
-max/min error 0.491754
+100 time training. current loss: 0.130891 	 first loss: 2.824962 	 average loss: 0.231933	 minmum error: 0.128093
+difference(times 10^10): 1010411855.308141 	max/min error 0.628828
 Layer 2
-200 time training. current loss: 0.035833 	 average loss: 0.039911 	 difference(times 10^10): 40778146.308784 
-max/min error 0.376719
-Finish training AE layer 2 	, elapsed time is 296.722254
+200 time training. current loss: 0.113484 	 first loss: 0.145351 	 average loss: 0.125474	 minmum error: 0.100761
+difference(times 10^10): 119894029.983439 	max/min error 0.588715
+Layer 2
+300 time training. current loss: 0.100142 	 first loss: 0.124525 	 average loss: 0.103094	 minmum error: 0.087103
+difference(times 10^10): 29517667.610319 	max/min error 0.629223
+Layer 2
+400 time training. current loss: 0.086283 	 first loss: 0.099609 	 average loss: 0.089116	 minmum error: 0.075317
+difference(times 10^10): 28328303.039565 	max/min error 0.487664
+Layer 2
+500 time training. current loss: 0.065631 	 first loss: 0.091973 	 average loss: 0.077894	 minmum error: 0.065631
+difference(times 10^10): 122622152.329694 	max/min error 0.517975
+Layer 2
+600 time training. current loss: 0.066989 	 first loss: 0.066536 	 average loss: 0.069650	 minmum error: 0.061242
+difference(times 10^10): 26611007.293134 	max/min error 0.452678
+Layer 2
+700 time training. current loss: 0.058475 	 first loss: 0.063795 	 average loss: 0.063207	 minmum error: 0.053699
+difference(times 10^10): 47319000.507211 	max/min error 0.426685
+Layer 2
+800 time training. current loss: 0.052417 	 first loss: 0.058658 	 average loss: 0.056877	 minmum error: 0.048680
+difference(times 10^10): 44600529.483614 	max/min error 0.438673
+Layer 2
+900 time training. current loss: 0.052334 	 first loss: 0.055096 	 average loss: 0.052194	 minmum error: 0.046001
+difference(times 10^10): 1396826.775099 	max/min error 0.475176
+Layer 2
+1000 time training. current loss: 0.049228 	 first loss: 0.051411 	 average loss: 0.048567	 minmum error: 0.041774
+difference(times 10^10): 6611580.192075 	max/min error 0.422440
+Finish training AE layer 2 	, elapsed time is 0.648033

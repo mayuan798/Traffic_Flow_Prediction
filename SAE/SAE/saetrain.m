@@ -4,23 +4,24 @@ function sae = saetrain(sae, x, opts)
     loss_history = {1, numel(sae.ae)};
     eltime = [1, numel(sae.ae)];
     num_history_L = 100;
+    
     for i = 1 : numel(sae.ae);
-        % initialize the parameter to store the historical eror
+        last_max = Inf;
         error_array = [];
         loss_array  = [];
         scale = 0;
         num_epochs = 0;
-        
         sae.ae{1,i}.L = 0;
-        repeat = 0; % not necessary
+        sae.ae{1,i}.e = 0;
         history_sae_L = Inf(1, num_history_L);
         
         disp(['Training AE ' num2str(i) '/' num2str(numel(sae.ae))]);
         tic;
         
-        while history_sae_L(1, 1) >= mean(history_sae_L)
+        while last_max >= max(history_sae_L)
             num_epochs = num_epochs + 1;
-            sae.ae{1,i} = nntrain(sae.ae{1,i}, x, x, opts);
+            last_max = max(history_sae_L);
+            sae.ae{i} = nntrain(sae.ae{i}, x, x, opts);
             history_sae_L(1, 1:end - 1) = history_sae_L(1, 2:end);
             history_sae_L(1, end) = sae.ae{1,i}.L;    % sae.ae{1,i}.L is the error of current epochs
             %% take down current error
@@ -39,19 +40,18 @@ function sae = saetrain(sae, x, opts)
                 % calculate the inequality equnation to see if the result meet the termination standard
                 % write debug information into file. Don't forget to give
                 % input file handle into fprintf function.
-                fprintf(fid, 'Layer %d\n%d time training. current loss: %f \t average loss: %f \t difference(times 10^10): %f \nmax/min error %f\n', ...
-                    i, num_epochs, sae.ae{1,i}.L, mean(history_sae_L), ...
+                fprintf(fid, 'Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f\t minmum error: %f\ndifference(times 10^10): %f \tmax/min error %f\n', ...
+                    i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), min(history_sae_L),...
                     10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
                     max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))));
             end
             
-            % display debug information on the command window
-%             sprintf('Layer %d \n%d time training. current loss: %f \t average loss: %f \t difference(times 10^10): %f \nmax/min error %f', ...
-%                 i, num_epochs, sae.ae{1,i}.L, mean(history_sae_L), ...
-%                 10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
-%                 max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))))
-            
+            sprintf('Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f\t minmum error: %f\ndifference(times 10^10): %f \tmax/min error %f\n', ...
+                    i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), min(history_sae_L),...
+                    10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
+                    max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))))
         end
+        
         % finish calculating ith layer, store the hisotrical data into cell
         % arrary error_history{1,i}.
         eltime(1, i) = toc;
