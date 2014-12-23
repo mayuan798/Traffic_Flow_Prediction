@@ -2,27 +2,30 @@ function sae = saetrain(sae, x, opts)
     fid = fopen('./training_record.txt', 'w');
     error_history = {1, numel(sae.ae)};
     loss_history = {1, numel(sae.ae)};
-    eltime = [1, numel(sae.ae)];
-    num_history_L = 100;
+    eltime = zeros(1, numel(sae.ae));
+    num_history_L = opts.batchsize;
+    
     for i = 1 : numel(sae.ae);
-        % initialize the parameter to store the historical eror
+        last_max = Inf;
         error_array = [];
         loss_array  = [];
         scale = 0;
         num_epochs = 0;
-        
         sae.ae{1,i}.L = 0;
-        repeat = 0; % not necessary
+        sae.ae{1,i}.e = Inf;
         history_sae_L = Inf(1, num_history_L);
         
         disp(['Training AE ' num2str(i) '/' num2str(numel(sae.ae))]);
-        tic;
-        
-        while history_sae_L(1, 1) >= mean(history_sae_L)
+
+        while sae.ae{1,i}.L < max(history_sae_L)
+            tic;
             num_epochs = num_epochs + 1;
-            sae.ae{1,i} = nntrain(sae.ae{1,i}, x, x, opts);
+            last_max = max(history_sae_L);
+            sae.ae{i} = nntrain(sae.ae{i}, x, x, opts);
             history_sae_L(1, 1:end - 1) = history_sae_L(1, 2:end);
             history_sae_L(1, end) = sae.ae{1,i}.L;    % sae.ae{1,i}.L is the error of current epochs
+            eltime(1, i) = eltime(1, i) + toc;
+            
             %% take down current error
             % dynamically alloc new memory to store historical data
             if 0 == mod(num_epochs, 10^scale)
@@ -39,26 +42,27 @@ function sae = saetrain(sae, x, opts)
                 % calculate the inequality equnation to see if the result meet the termination standard
                 % write debug information into file. Don't forget to give
                 % input file handle into fprintf function.
-                fprintf(fid, 'Layer %d\n%d time training. current loss: %f \t average loss: %f \t difference(times 10^10): %f \nmax/min error %f\n', ...
-                    i, num_epochs, sae.ae{1,i}.L, mean(history_sae_L), ...
+                fprintf(fid, 'Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f \ndifference(times 10^10): %f \tmax/min error %f\n', ...
+                    i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), ...
                     10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
                     max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))));
             end
             
-            % display debug information on the command window
-%             sprintf('Layer %d \n%d time training. current loss: %f \t average loss: %f \t difference(times 10^10): %f \nmax/min error %f', ...
-%                 i, num_epochs, sae.ae{1,i}.L, mean(history_sae_L), ...
-%                 10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
-%                 max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))))
-            
+            sprintf('Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f \ncurrent maximum loss: %f \t last maximum loss: %f\ndifference(times 10^10): %f \tmax/min error %f\n', ...
+                    i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), ...
+                    max(history_sae_L), last_max, ...
+                    10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
+                    max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))))
         end
+        
         % finish calculating ith layer, store the hisotrical data into cell
         % arrary error_history{1,i}.
-        eltime(1, i) = toc;
         error_history{1, i} = error_array;
         loss_history{1, i} = loss_array;
-        disp(['Finish training AE ' num2str(i) '/' num2str(numel(sae.ae)) 'training time is ' num2str(toc)]); % debug information
-        fprintf(fid, 'Finish training AE layer %d \t, elapsed time is %f\n', i, eltime(1, i));
+        % debug information
+        sprintf('Finish training AE %d/%d, training time is %f, total time is %f\n', ...
+                    num2str(i), num2str(numel(sae.ae), num2str(toc), eltime(1, i)))
+        fprintf(fid, 'Finish training AE layer %d \t, total number of epochs is %d\t total elapsed time is %f\n', i, num_epochs, eltime(1, i));
         % put input into trained layer get the output of current layer as the input to the next layer.
         t = nnff(sae.ae{1,i}, x, x);
         x = t.a{2};
