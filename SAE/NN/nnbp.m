@@ -19,7 +19,7 @@ function nn = nnbp(nn)
                 d_act = 1.7159 * 2/3 * (1 - 1/(1.7159)^2 * nn.a{i}.^2);
         end
         
-        if(nn.nonSparsityPenalty > 0)
+        if(nn.nonSparsityPenalty>0)
             pi = repmat(nn.p{i}, size(nn.a{i}, 1), 1);
             sparsityError = [zeros(size(nn.a{i},1),1) nn.nonSparsityPenalty * (-nn.sparsityTarget ./ pi + (1 - nn.sparsityTarget) ./ (1 - pi))];
         end

@@ -2,8 +2,13 @@ function sae = saetrain(sae, x, opts)
     fid = fopen('./training_record.txt', 'w');
     error_history = {1, numel(sae.ae)};
     loss_history = {1, numel(sae.ae)};
+<<<<<<< HEAD
     eltime = zeros(1, numel(sae.ae));
     num_history_L = opts.batchsize;
+=======
+    eltime = [1, numel(sae.ae)];
+    num_history_L = 100;
+>>>>>>> origin/SAE_ver_2.0
     
     for i = 1 : numel(sae.ae);
         last_max = Inf;
@@ -12,6 +17,7 @@ function sae = saetrain(sae, x, opts)
         scale = 0;
         num_epochs = 0;
         sae.ae{1,i}.L = 0;
+<<<<<<< HEAD
         sae.ae{1,i}.e = Inf;
         history_sae_L = Inf(1, num_history_L);
         
@@ -19,6 +25,15 @@ function sae = saetrain(sae, x, opts)
 
         while sae.ae{1,i}.L < max(history_sae_L)
             tic;
+=======
+        sae.ae{1,i}.e = 0;
+        history_sae_L = Inf(1, num_history_L);
+        
+        disp(['Training AE ' num2str(i) '/' num2str(numel(sae.ae))]);
+        tic;
+        
+        while last_max >= max(history_sae_L)
+>>>>>>> origin/SAE_ver_2.0
             num_epochs = num_epochs + 1;
             last_max = max(history_sae_L);
             sae.ae{i} = nntrain(sae.ae{i}, x, x, opts);
@@ -42,15 +57,25 @@ function sae = saetrain(sae, x, opts)
                 % calculate the inequality equnation to see if the result meet the termination standard
                 % write debug information into file. Don't forget to give
                 % input file handle into fprintf function.
+<<<<<<< HEAD
                 fprintf(fid, 'Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f \ndifference(times 10^10): %f \tmax/min error %f\n', ...
                     i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), ...
+=======
+                fprintf(fid, 'Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f\t minmum error: %f\ndifference(times 10^10): %f \tmax/min error %f\n', ...
+                    i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), min(history_sae_L),...
+>>>>>>> origin/SAE_ver_2.0
                     10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
                     max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))));
             end
             
+<<<<<<< HEAD
             sprintf('Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f \ncurrent maximum loss: %f \t last maximum loss: %f\ndifference(times 10^10): %f \tmax/min error %f\n', ...
                     i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), ...
                     max(history_sae_L), last_max, ...
+=======
+            sprintf('Layer %d\n%d time training. current loss: %f \t first loss: %f \t average loss: %f\t minmum error: %f\ndifference(times 10^10): %f \tmax/min error %f\n', ...
+                    i, num_epochs, sae.ae{1,i}.L, history_sae_L(1,1), mean(history_sae_L), min(history_sae_L),...
+>>>>>>> origin/SAE_ver_2.0
                     10^10 * abs(sae.ae{1,i}.L - mean(history_sae_L)), ...
                     max(abs(max(max(sae.ae{1,i}.e))), abs(min(min(sae.ae{1,i}.e)))))
         end
